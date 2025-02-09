@@ -1,6 +1,3 @@
-// Load Navbar Script
-import './navbar.js';
-
 // Dynamically inject meta tags
 const metaCharset = document.createElement('meta');
 metaCharset.setAttribute('charset', 'UTF-8');
@@ -44,6 +41,9 @@ scriptBootstrap.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/boot
 scriptBootstrap.setAttribute('integrity', 'sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz');
 scriptBootstrap.setAttribute('crossorigin', 'anonymous');
 document.body.appendChild(scriptBootstrap);
+
+// Load Navbar Script
+import './navbar.js';
 
 // After Bootstrap scripts are loaded, load the navbar.js
 scriptBootstrap.onload = () => {
