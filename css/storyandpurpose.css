@@ -1,21 +1,29 @@
 * {
     font-family: serif;
+
 }
 h1 {
     text-align: center;
     padding-top: 40px;
     font-weight: bold;
 }
+
+.ourStoryImgNTxt {
+    display: flex;
+}
 p {
     text-align: center;
     font-size: larger;
 }
 
-.ourStoryImgNTxt {
-    display: flex;
-}
-
 .inside {
     padding: 30px;
     align-items: center;
+    
 }
+
+.bottom {
+    background-color: aqua;
+}
+
+
