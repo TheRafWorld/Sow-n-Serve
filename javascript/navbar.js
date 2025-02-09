@@ -8,7 +8,7 @@ const NAVBAR_HTML = `
       
               <div class="collapse navbar-collapse d-lg-flex" id="Navagation Bar">
                 <a class="navbar-brand col-lg-3 me-0" href="index.html">
-                    <img src="Assets/Logo.jpg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">Sow N' Serve</a>
+                    <img src="https://therafworld.github.io/Sow-n-Serve/Assets/Logo.jpg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">Sow N' Serve</a>
                 <ul class="navbar-nav col-lg-6 justify-content-lg-center">
                   <li class="nav-item">
                     <a class="nav-link active" href="index.html">Home</a>
