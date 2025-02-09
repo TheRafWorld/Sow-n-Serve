@@ -15,7 +15,7 @@ document.head.appendChild(metaViewport);
 const linkCSS = document.createElement('link');
 linkCSS.rel = 'stylesheet';
 linkCSS.type = 'text/css';
-linkCSS.href = '/css/main.css';
+linkCSS.href = '/css/index.css';
 document.head.appendChild(linkCSS);
 
 // Dynamically inject Bootstrap CSS
