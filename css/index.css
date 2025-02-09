@@ -64,3 +64,12 @@ transform: scale(1.05);
 h5.footer {
     padding-top: 1rem;
 }
+
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+    position: absolute;
+}
