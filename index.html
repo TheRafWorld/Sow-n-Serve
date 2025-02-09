@@ -5,10 +5,108 @@
         <title>Sow N’ Serve</title>
     </head>
 
+    <style>
+     /* Reset default margin & padding */
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full-width banner */
+        .banner {
+            width: 100%;
+            height: 50vh; /* Adjust height as needed */
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            padding-top: 20vh;
+            position: relative;
+        }
+
+        /* Video Background */
+        .banner video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        /* Text overlay */
+        .banner-text {
+            background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+            padding: 20px 40px;
+            border-radius: 8px;
+            text-align: left;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .banner-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .banner-text p {
+            font-size: 1.2rem;
+        }
+
+        /* Responsive for mobile */
+        @media (max-width: 768px) {
+            .banner {
+                height: 40vh;
+            }
+
+            .banner-text h1 {
+                font-size: 2rem;
+            }
+
+            .banner-text p {
+                font-size: 1rem;
+            }
+        }
+
+        .btn-special{
+            display: inline-block;
+            background-color: #28a745; /* Green color */
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-special:hover {
+        transform: scale(1.05);
+        }
+    </style>
+
     <body>
         <!-- Dynamic Navbar -->
         <div id="navbar-container"></div>
 
+
+        <main>
+            <!-- Video Container -->
+             <div class="container-fluid banner">
+                <video autoplay muted loop>
+                    <source src="https://therafworld.github.io/Sow-n-Serve/Assets/Random Farm Images/2758322-hd_1920_1080_30fps.mp4" type="video/mp4">
+                </video>
+                <div class="container-sm banner-text">
+                    <h2>Welcome to Sow N' Serve</h2>
+                    <p>Slogan Here</p>
+                    <a type="button" class="btn-special" href="https://therafworld.github.io/Sow-n-Serve/menu.html">Our Menu</a>
+                    <a type="button" class="btn-special" href="https://therafworld.github.io/Sow-n-Serve/reserve.html">Reserve A Spot</a>
+                </div>
+             </div>
+
+            
+        </main>
 
 
         
