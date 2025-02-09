@@ -4,15 +4,208 @@
         <title>Sow N’ Serve Menu</title>
     </head>
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .restaurant-seating {
+            display: grid;
+            grid-template-columns: repeat(3, 120px);
+            
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .seat-container {
+            display: grid;
+            grid-template-columns: repeat(2, 60px);
+        }
+
+        .seat {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            background-color: #28a745;
+            border: 2px solid #218838;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .seat.outside {
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100px;
+        }
+
+        .seat.outside + .seat.outside {
+            margin-left: 50px;
+        }
+
+        .seat.long {
+            margin: 5px;
+            width: 50px;
+            height: 170px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .seat.reserved {
+            background-color: #dc3545;
+            border-color: #a71d2a;
+            cursor: not-allowed;
+        }
+
+        .seat.selected {
+            background-color: #ffc107;
+            border-color: #d39e00;
+        }
+
+        .reserve-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .reserve-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .gap-text {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+            margin: 10px 0;
+        }
+    </style>
+
     <body>
         <!-- Dynamic Navbar -->
         <div id="navbar-container"></div>
         
         <main>
-            
+
+
+            <h2>Select Your Seat</h2>
+            <div class ="restaurant-seating">
+                <div class="seat-container">
+                    <div class="seat" data-seat="A1">A1</div>
+                    <div class="seat reserved" data-seat="A2">A2</div>
+                    <div class="seat" data-seat="A3">A3</div>
+    
+                    <div class="seat" data-seat="A4">A4</div>
+                    <div class="seat reserved" data-seat="A5">A5</div>
+                    <div class="seat" data-seat="A6">A6</div>
+                </div>
+                <div class="gap-text">Table Divider</div>
+                <div class="seat-container">
+                    <div class="seat long" data-seat="B1">B1</div>
+                    <div class="seat long reserved" data-seat="B2">B2</div>
+                </div>
+                <hr></hr>
+                <hr class="wall"></hr>
+                <hr></hr>
+                <div class="seat outside reserved" data-seat="C1">Ecosphere 1</div>
+                <div class="gap-text">Outdoor Seating</div>
+                <div class="seat outside" data-seat="C2">Ecosphere 2</div>
+            </div>
+
+            <section id="contact-us" class="contact-us container-lg">
+                <div class="section-title">
+                </div>
+        
+                <div class="form">
+                    <form action="https://formspree.io/f/mnqeawng" method="POST">
+                        <div class="form-section">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
+                        </div>
+                        <div class="form-section">
+                            <input type="email" class="form-control" name="_replyto" id="email" placeholder="Your Email" required="" data-rule="email">
+                        </div>
+                        <div class="form-section">
+                            <input type="date" class="form-control" name="_date" id="date" placeholder="Date" required="" data-rule="date">
+                        </div>
+                        <div class="form-section">
+                            <input type="time" class="form-control" name="_time" id="date" placeholder="Time" required="" data-rule="time">
+                        </div>
+                        <div class="form-section">
+                            <input type="text" class="form-control" name="_subject" id="seats-input" placeholder="Seats" required="">
+                        </div>
+                        <div class="form-section">
+                            <textarea class="form-control" name="message" rows="5" placeholder="Any other information you would like us to know. Ex. Its your birthday. (Cake Provided)" required=""></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="form-button reserve-btn">Reserve Selected Seats</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </main>
+
+
+        <script>
+            const seats = document.querySelectorAll('.seat');
+            const reserveButton = document.querySelector('.reserve-btn');
+            const seatInput = document.getElementById('seats-input'); // Reference to form input
+            let selectedSeats = [];
+        
+            seats.forEach(seat => {
+                seat.addEventListener('click', () => {
+                    if (!seat.classList.contains('reserved')) {
+                        seat.classList.toggle('selected');
+                        const seatNumber = seat.getAttribute('data-seat');
+        
+                        if (selectedSeats.includes(seatNumber)) {
+                            selectedSeats = selectedSeats.filter(s => s !== seatNumber);
+                        } else {
+                            selectedSeats.push(seatNumber);
+                        }
+        
+                        // Update the form field with selected seats
+                        seatInput.value = selectedSeats.join(', ');
+                    }
+                });
+            });
+        
+            reserveButton.addEventListener('click', (event) => {
+                if (selectedSeats.length === 0) {
+                    alert('Please select at least one seat before reserving.');
+                    event.preventDefault(); // Prevent form submission if no seats are selected
+                } else {
+                    alert(`Seats Reserved: ${selectedSeats.join(', ')}`);
+                }
+            });
+        </script>
+        
         
         <!-- Required JavaScript -->
         <script type="module" src="https://therafworld.github.io/Sow-n-Serve/javascript/jsimport.js" defer></script>
     </body>
+</head>
 </html>
