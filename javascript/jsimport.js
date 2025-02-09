@@ -15,7 +15,7 @@ document.head.appendChild(metaViewport);
 const linkCSS = document.createElement('link');
 linkCSS.rel = 'stylesheet';
 linkCSS.type = 'text/css';
-linkCSS.href = './css/index.css';  // Adjusted path
+linkCSS.href = 'https://therafworld.github.io/Sow-n-Serve/css/index.css';  // Full URL for CSS
 document.head.appendChild(linkCSS);
 
 // Dynamically inject Bootstrap CSS
@@ -48,7 +48,7 @@ document.body.appendChild(scriptBootstrap);
 // After Bootstrap scripts are loaded, load the navbar.js
 scriptBootstrap.onload = () => {
     const navbarScript = document.createElement('script');
-    navbarScript.src = './javascript/navbar.js';  // Adjusted path
+    navbarScript.src = 'https://therafworld.github.io/Sow-n-Serve/javascript/navbar.js';  // Full URL for navbar.js
     navbarScript.defer = true;
     document.body.appendChild(navbarScript);
 };
